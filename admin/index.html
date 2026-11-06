@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin · Portafolio Anmar</title>
+  <meta name="theme-color" content="#0C0C0E" />
+  <link rel="icon" href="/angel-portafolio/logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="admin">
+  <!-- Paso 1: conectar con GitHub -->
+  <section class="panel acceso" data-acceso hidden>
+    <p class="ceja">Admin del portafolio</p>
+    <h1>Conecta tu clave</h1>
+    <p class="ayuda">Pega la clave de GitHub (token) que creaste para este portafolio. Se guarda solo en este dispositivo.</p>
+    <form data-form-clave>
+      <label for="clave">Clave de GitHub</label>
+      <input id="clave" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…" required />
+      <button class="boton" type="submit">Entrar</button>
+      <p class="error" data-error-clave role="alert"></p>
+    </form>
+  </section>
+
+  <!-- Paso 2: editor -->
+  <div class="editor" data-editor hidden>
+    <header class="ed-top">
+      <div>
+        <p class="ceja">Admin</p>
+        <h1>Videos</h1>
+      </div>
+      <div class="ed-acciones">
+        <a class="link" href="../" target="_blank" rel="noopener">Ver web ↗</a>
+        <button class="link" type="button" data-salir>Salir</button>
+      </div>
+    </header>
+
+    <form class="panel agregar" data-form-agregar>
+      <label for="link">Agregar video</label>
+      <div class="fila-input">
+        <input id="link" type="text" inputmode="url" autocomplete="off" placeholder="Pega el link de YouTube" required />
+        <button class="boton" type="submit">Agregar</button>
+      </div>
+      <p class="error" data-error-link role="alert"></p>
+    </form>
+
+    <section class="panel">
+      <div class="cat-cab">
+        <h2>Categorías</h2>
+        <form class="fila-input mini" data-form-cat>
+          <input type="text" placeholder="Nueva categoría" aria-label="Nueva categoría" maxlength="30" required />
+          <button class="boton chico" type="submit">+</button>
+        </form>
+      </div>
+      <ul class="chips" data-categorias></ul>
+    </section>
+
+    <section>
+      <p class="ayuda">Arrastra con ⠿ o usa las flechas para ordenar. El primero aparece arriba en la web.</p>
+      <ol class="lista" data-lista></ol>
+      <p class="vacio" data-vacio hidden>Todavía no hay videos. Pega un link de YouTube arriba.</p>
+    </section>
+
+    <div class="publicar" data-barra-publicar>
+      <p data-estado>Sin cambios</p>
+      <button class="boton" type="button" data-publicar disabled>Publicar</button>
+    </div>
+  </div>
+
+  <p class="cargando" data-cargando>Cargando…</p>
+
+  <script type="module" src="/src/admin/main.js"></script>
+</body>
+</html>
