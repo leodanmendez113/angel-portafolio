@@ -144,3 +144,8 @@
   .hero-titulo { font-size: clamp(4rem, 10vw, 9rem); }
   .marco { left: 72%; }
 }
+
+/* ---------- Email y redes en el pie (los maneja el admin) ---------- */
+.redes { display: flex; justify-content: center; gap: 10px; margin-bottom: 14px; }
+.redes a { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--borde); color: var(--texto); transition: border-color 0.2s, color 0.2s; }
+.redes a:hover { border-color: var(--acento); color: var(--acento); }

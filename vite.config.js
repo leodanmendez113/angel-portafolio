@@ -1,8 +1,7 @@
 import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
-// En el VPS la web vive en la raíz del subdominio (base "/").
-// El respaldo en GitHub Pages compila con BASE=/angel-portafolio/.
+// La web vive en la raíz de su subdominio de anmarproductions.com.
 export default defineConfig({
   base: process.env.BASE || '/',
   plugins: [

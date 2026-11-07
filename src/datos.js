@@ -36,7 +36,7 @@ export const embed = (id) =>
 export const LISTA_VACIA = { categorias: [], videos: [] }
 
 // Primero la lista que maneja el admin en el VPS (/datos/videos.json). Si no está
-// (sin señal, en desarrollo o en el respaldo de GitHub Pages), se usa la copia incluida en la web.
+// (sin señal o en desarrollo), se usa la copia incluida en la web.
 export async function cargarVideos() {
   for (const url of ['/datos/videos.json', `${import.meta.env.BASE_URL}videos.json`]) {
     try {
