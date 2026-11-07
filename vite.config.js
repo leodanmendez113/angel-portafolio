@@ -1,18 +1,10 @@
 import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
-import { resolve } from 'node:path'
 
-// El "base" tiene que coincidir con el nombre del repositorio en GitHub Pages.
+// En el VPS la web vive en la raíz del subdominio (base "/").
+// El respaldo en GitHub Pages compila con BASE=/angel-portafolio/.
 export default defineConfig({
-  base: '/angel-portafolio/',
-  build: {
-    rollupOptions: {
-      input: {
-        main: resolve(import.meta.dirname, 'index.html'),
-        admin: resolve(import.meta.dirname, 'admin/index.html')
-      }
-    }
-  },
+  base: process.env.BASE || '/',
   plugins: [
     VitePWA({
       registerType: 'autoUpdate',
@@ -34,8 +26,7 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2}'],
-        // El admin no se sirve desde la caché de la portada.
-        navigateFallbackDenylist: [/\/admin/],
+        navigateFallbackDenylist: [/^\/datos\//],
         runtimeCaching: [
           {
             // La lista de videos siempre se pide fresca; la copia guardada solo se usa sin señal.

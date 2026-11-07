@@ -5,11 +5,3 @@ export const MARCA = 'Anmar Productions'
 // TODO: reemplazar por el número real de Ángel.
 export const WHATSAPP = '13050000000'
 export const WHATSAPP_MENSAJE = 'Hola Ángel, vi tu portafolio y quiero cotizar una grabación para mi negocio.'
-
-// Repositorio donde vive la lista de videos (lo usa el admin para guardar).
-export const REPO = {
-  dueno: 'leodanmendez113',
-  nombre: 'angel-portafolio',
-  rama: 'main',
-  archivo: 'public/videos.json'
-}
