@@ -18,9 +18,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon-180x180.png', 'logo.svg'],
       manifest: {
-        name: 'Anmar Productions — Portafolio de edición',
-        short_name: 'Anmar Edición',
-        description: 'Reels y videos editados por Anmar Productions.',
+        name: 'Anmar Productions — Videografía comercial',
+        short_name: 'Anmar Video',
+        description: 'Reels y comerciales grabados por Anmar Productions.',
         lang: 'es',
         theme_color: '#0C0C0E',
         background_color: '#0C0C0E',

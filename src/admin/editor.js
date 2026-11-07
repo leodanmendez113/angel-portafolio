@@ -77,7 +77,7 @@ export function crearEditor(datos, alCambiar) {
   function pintar() {
     chips.innerHTML = estado.categorias.length
       ? estado.categorias.map((c) => `<li>${escapar(c)} <button type="button" data-borrar-cat="${escapar(c)}" aria-label="Borrar categoría ${escapar(c)}">✕</button></li>`).join('')
-      : '<li class="chip-vacio">Crea tu primera categoría (ej: Comerciales, Bodas, Podcast)</li>'
+      : '<li class="chip-vacio">Crea tu primera categoría (ej: Comerciales, Producto, Restaurantes)</li>'
 
     $('[data-vacio]').hidden = estado.videos.length > 0
     const opciones = (actual) => ['', ...estado.categorias]

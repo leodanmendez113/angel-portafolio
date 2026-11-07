@@ -18,6 +18,8 @@
 }
 .punto { width: 8px; height: 8px; border-radius: 50%; background: #E5484D; box-shadow: 0 0 12px #E5484D; animation: parpadeo 1.6s infinite; }
 @keyframes parpadeo { 50% { opacity: 0.25; } }
+.hero .ceja { position: relative; z-index: 1; }
+.hero-titulo, .hero-sub { text-shadow: 0 2px 24px rgba(0, 0, 0, 0.55); }
 .hero-titulo { font-size: clamp(3.4rem, 17vw, 9rem); margin-bottom: 22px; position: relative; z-index: 1; }
 .fila { display: block; white-space: nowrap; will-change: transform; }
 .f2 { padding-left: 0.6em; }
@@ -40,6 +42,20 @@
 .marco::after { right: -1px; bottom: -1px; border-left: 0; border-top: 0; border-bottom-right-radius: 28px; }
 .marco-rec { color: #E5484D; }
 .marco-tc { font-variant-numeric: tabular-nums; }
+.marco-rec, .marco-tc { position: relative; z-index: 2; text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6); }
+
+/* Reel aleatorio dentro del marco: miniatura primero, video mudo cuando arranca. */
+.marco-video { position: absolute; inset: 0; z-index: 0; border-radius: inherit; overflow: hidden; pointer-events: none; }
+.marco-video img, .marco-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.marco-video img { object-fit: cover; transform: scale(1.02); }
+/* El iframe se agranda un poco para esconder los bordes y el logo de YouTube. */
+.marco-video iframe { transform: scale(1.18); opacity: 0; transition: opacity 0.8s ease; }
+.marco-video.reproduciendo iframe { opacity: 1; }
+/* Velo oscuro para que el título se lea bien encima del video. */
+.marco-video::after {
+  content: ''; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, rgba(12, 12, 14, 0.55), rgba(12, 12, 14, 0.35) 40%, rgba(12, 12, 14, 0.7));
+}
 
 /* ---------- Cinta ---------- */
 .cinta { overflow: hidden; border-block: 1px solid var(--borde); padding: 16px 0; background: var(--fondo-2); }

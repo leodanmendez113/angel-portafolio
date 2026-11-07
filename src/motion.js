@@ -22,7 +22,7 @@ export function iniciarMotion() {
       .to('.marco', { scale: 1.25, opacity: 0 }, 0)
       .to('.hero-sub, .hero-pie', { opacity: 0, y: -30 }, 0)
 
-    // Código de tiempo que avanza con el scroll, como en una línea de tiempo de edición.
+    // Código de tiempo que avanza con el scroll, como en una cámara grabando.
     const tc = document.querySelector('[data-timecode]')
     const dos = (n) => String(Math.floor(n)).padStart(2, '0')
     ScrollTrigger.create({
