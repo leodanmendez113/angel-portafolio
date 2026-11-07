@@ -2,20 +2,23 @@ import { WHATSAPP, WHATSAPP_MENSAJE, SITIO } from './config.js'
 
 // Datos de contacto que maneja el admin (/datos/contacto.json): WhatsApp, email, redes y el
 // mensaje de WhatsApp de esta web. Si el archivo no se puede leer, quedan los de config.js.
-// (Este archivo es igual en portafolio, cotizador y comercial; solo cambia SITIO en config.js.)
+// (Este archivo es igual en portafolio, cotizador, comercial y bodas; solo cambia SITIO en config.js.)
 export const CONTACTO = { whatsapp: WHATSAPP, email: '', instagram: '', tiktok: '', youtube: '', mensaje: WHATSAPP_MENSAJE }
 
 export async function cargarContacto() {
   try {
     const r = await fetch('/datos/contacto.json', { cache: 'no-cache' })
-    if (!r.ok || !r.headers.get('content-type')?.includes('json')) return
+    if (!r.ok || !r.headers.get('content-type')?.includes('json')) return null
     const d = await r.json()
     if (/^\d{8,15}$/.test(d.whatsapp)) CONTACTO.whatsapp = d.whatsapp
     for (const campo of ['email', 'instagram', 'tiktok', 'youtube']) {
       if (typeof d[campo] === 'string') CONTACTO[campo] = d[campo]
     }
     if (d.mensajes?.[SITIO]) CONTACTO.mensaje = d.mensajes[SITIO]
-  } catch {}
+    return d
+  } catch {
+    return null
+  }
 }
 
 export const linkWhatsApp = (texto = CONTACTO.mensaje) =>
